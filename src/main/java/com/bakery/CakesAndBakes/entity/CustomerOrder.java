@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,18 +25,15 @@ public class CustomerOrder {
     @Column(name = "id")
     private Long Id;
 
-    @NotBlank(message = "Customer id cannot be Blank")
-    @NotNull
+    @NotNull(message = "Customer id cannot be null")
     @Column(name = "customer_id", nullable = false)
     private Long customerId;
 
-    @NotBlank(message = "Total cannot be Blank")
-    @NotNull
+    @NotNull(message = "Total cannot be null")
     @Column(name = "total", nullable = false)
     private Double total;
 
-    @NotBlank(message = "Order date cannot be blank")
-    @NotNull
+    @NotNull(message = "Order date cannot be null")
     @Column(name = "order_date", nullable = false)
     private Date orderDate;
 

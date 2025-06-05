@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,17 +24,14 @@ public class Customer {
     private Long id;
 
     @NotBlank(message = "Name cannot be Blank")
-    @NotNull
     @Column(name = "name", nullable = false)
     private String name;
 
     @NotBlank(message = "Email cannot be blank")
-    @NotNull
     @Column(name = "email", nullable = false)
     private String email;
 
     @NotBlank(message = "Phone cannot be blank")
-    @NotNull
     @Column(name = "phone", nullable = false)
     private String phone;
 }

@@ -24,17 +24,14 @@ public class Cake {
     private Long id;
 
     @NotBlank(message = "Name cannot be Blank")
-    @NotNull
     @Column(name = "name", nullable = false)
     private String name;
 
     @NotBlank(message = "Flavorame cannot be Blank")
-    @NotNull
     @Column(name = "flavor", nullable = false)
     private String flavor;
 
-    @NotBlank(message = "isGlutenFree cannot be Blank")
-    @NotNull
+    @NotNull(message = "isGlutenFree cannot be null")
     @Column(name = "isGlutenFree", nullable = false)
     private Boolean isGlutenFree;
 
