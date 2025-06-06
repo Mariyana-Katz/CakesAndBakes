@@ -24,19 +24,10 @@ public class OrderRequestServiceImpl implements OrderRequestService {
 
     }
 
-    // Helper method that handles the Optional and throws an exception if the cake
-    // is not found
-    static OrderRequest unwrapOrderRequest(Optional<OrderRequest> entity, Long id) {
-        if (entity.isPresent())
-            return entity.get();
-        else
-            throw new OrderRequestNotFoundException(id);
-    }
-
-    @Override
+    
+  @Override
     public OrderRequest saveOrderRequest(OrderRequest orderRequest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveOrderRequest'");
+       return orderRequestRepository.save(orderRequest);
     }
 
     @Override
@@ -49,6 +40,15 @@ public class OrderRequestServiceImpl implements OrderRequestService {
     public List<OrderRequest> getAllOrderRequest() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAllOrderRequest'");
+    }
+
+    // Helper method that handles the Optional and throws an exception if the cake
+    // is not found
+    static OrderRequest unwrapOrderRequest(Optional<OrderRequest> entity, Long id) {
+        if (entity.isPresent())
+            return entity.get();
+        else
+            throw new OrderRequestNotFoundException(id);
     }
 
 }
