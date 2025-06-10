@@ -3,13 +3,15 @@ package com.bakery.CakesAndBakes.repository;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.bakery.CakesAndBakes.entity.OrderRequest;
 
 @Repository
-public interface OrderRequestRepository extends CrudRepository<OrderRequest, Long> {
+public interface OrderRequestRepository extends JpaRepository<OrderRequest, Long> {
 
     List<OrderRequest> findByEmail(String email);
 
@@ -21,6 +23,13 @@ public interface OrderRequestRepository extends CrudRepository<OrderRequest, Lon
 
     List<OrderRequest> findAll();
 
-    
+    @Query(value = "SELECT o FROM OrderRequest o WHERE o.cakeSize = :cakeSize AND o.cakeFilling = :cakeFilling")
+    List<OrderRequest> getByFillingAndSize(@Param("cakeSize") String cakeSize,
+            @Param("cakeFilling") String cakeFilling);
+
+    @Query(value = " SELECT o FROM OrderRequest o WHERE o.cakeSize = :cakeSize AND o.cakeFilling = :cakeFilling AND o.spongeType = :spongeType")
+    List<OrderRequest> getByFillingSizeAndSpongeType(@Param("cakeSize") String cakeSize,
+            @Param("cakeFilling") String cakeFilling,
+            @Param("spongeType") String spongeType);
 
 }

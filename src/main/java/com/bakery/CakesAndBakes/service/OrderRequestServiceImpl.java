@@ -51,4 +51,16 @@ public class OrderRequestServiceImpl implements OrderRequestService {
             throw new OrderRequestNotFoundException(id);
     }
 
-}
+
+    public List<OrderRequest> getOrderRequestByCakeFillingAndCakeSize(String cakeSize, String cakeFilling) {
+        return orderRequestRepository.getByFillingAndSize(cakeFilling, cakeSize);
+    }
+
+
+    
+    public List<OrderRequest> getOrderRequestByCakeFillingSizeAndSponge(String cakeSize, String cakeFilling,
+            String spongeType) {
+        return orderRequestRepository.getByFillingSizeAndSpongeType(cakeSize, cakeFilling, spongeType);
+        }
+
+    }
