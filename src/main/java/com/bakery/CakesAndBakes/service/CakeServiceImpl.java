@@ -37,8 +37,8 @@ public class CakeServiceImpl implements CakeService {
 
     @Override
     public List<Cake> getCakes() {
-        return (List<Cake>) cakeRepository.findAll();// because the crudRepository return Iterable<T> we cast is as a List
-                                                     
+        return (List<Cake>) cakeRepository.findAll();// because the crudRepository return Iterable<T> we cast is as a
+                                                     // List
 
     }
 
@@ -53,10 +53,10 @@ public class CakeServiceImpl implements CakeService {
 
     // @Override
     // public Cake getCake(String flavor) {
-    //     List<Cake> cakes = cakeRepository.findByFlavor(flavor);
-    //     if (cakes == null || cakes.isEmpty()) {
-    //         throw new CakeNotFoundException(flavor);
-    //     }
-    //     return cakes.get(0);
+    // List<Cake> cakes = cakeRepository.findByFlavor(flavor);
+    // if (cakes == null || cakes.isEmpty()) {
+    // throw new CakeNotFoundException(flavor);
+    // }
+    // return cakes.get(0);
     // }
 }

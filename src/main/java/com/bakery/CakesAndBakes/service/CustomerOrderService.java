@@ -7,6 +7,7 @@ import com.bakery.CakesAndBakes.entity.CustomerOrder;
 public interface CustomerOrderService {
 
     CustomerOrder getCustomerOrder(Long id);
-    List <CustomerOrder> getAllOrder();
+
+    List<CustomerOrder> getAllOrder();
 
 }

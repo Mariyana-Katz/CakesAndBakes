@@ -8,12 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import com.bakery.CakesAndBakes.entity.CustomerOrder;
 
-
 @Repository
-public interface CustomerOrderRepository extends JpaRepository <CustomerOrder, Long> {
+public interface CustomerOrderRepository extends JpaRepository<CustomerOrder, Long> {
 
+    Optional<CustomerOrder> findById(Long id);
 
-    Optional <CustomerOrder> findById(Long id);
-     List<CustomerOrder> findAll();
+    List<CustomerOrder> findAll();
 
 }

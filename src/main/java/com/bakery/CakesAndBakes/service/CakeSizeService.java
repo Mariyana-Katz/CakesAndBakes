@@ -6,5 +6,9 @@ import com.bakery.CakesAndBakes.entity.CakeSize;
 
 public interface CakeSizeService {
 
-     List<CakeSize> getAllCakeSizes();
+    List<CakeSize> getAllCakeSizes();
+
+    CakeSize getCakeSizeById(Long id);
+
+    CakeSize saveCakeSize(CakeSize cakeSize);
 }

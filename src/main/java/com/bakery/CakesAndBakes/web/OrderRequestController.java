@@ -35,6 +35,8 @@ public class OrderRequestController {
         return new ResponseEntity<>(orderRequestService.saveOrderRequest(orderRequest), HttpStatus.CREATED);
     }
 
+    // Handles GET requests to search for custom cake orders based on
+    // both cake size and cake filling.
     @GetMapping("/search")
     public ResponseEntity<List<OrderRequest>> getOrderRequestBycakeFillingAndCakeSize(@RequestParam String cakeSize,
             @RequestParam String cakeFilling) {

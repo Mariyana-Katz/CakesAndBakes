@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bakery.CakesAndBakes.entity.CakeSize;
 import com.bakery.CakesAndBakes.service.CakeSizeService;
@@ -24,5 +25,18 @@ public class CakeSizeController {
     @GetMapping("/all")
     public ResponseEntity<List<CakeSize>> getAllCakeSizes() {
         return new ResponseEntity<>(cakeSizeService.getAllCakeSizes(), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CakeSize> getCakeSizeById(Long id) {
+        return new ResponseEntity<>(cakeSizeService.getCakeSizeById(id), HttpStatus.OK);
+    }
+
+    // part of the native query to search for cake sizes by id
+    @GetMapping("/search")
+    public ResponseEntity<CakeSize> getCakeSizesById(@RequestParam Long id) {
+        CakeSize cakeSize = cakeSizeService.getCakeSizeById(id);
+        return new ResponseEntity<>(cakeSize, HttpStatus.OK);
+
     }
 }
