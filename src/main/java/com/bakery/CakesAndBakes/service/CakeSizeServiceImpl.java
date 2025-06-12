@@ -48,20 +48,22 @@ public class CakeSizeServiceImpl implements CakeSizeService {
         return cakeSizeRepository.insertCakeSize(newSize, numberOfServings);
     }
 
-    // Helper method that handles the Optional and throws an exception if the cake
-    // is not found
-    static CakeSize unwrapCakeSize(Optional<CakeSize> entity, Long id) {
-        if (entity.isPresent())
-            return entity.get();
-        else
-            throw new CakeSizeNotFoundException(id);
-    }
+   
 
     // part of the native SQL query, this method retrieves a CakeSize by its number
     // of servings
 
     public List<CakeSize> getCakeSizeByNumberOfServings(String numberOfServings) {
         return cakeSizeRepository.findByNumberOfServings(numberOfServings);
+    }
+
+     // Helper method that handles the Optional and throws an exception if the cake
+    // is not found
+    static CakeSize unwrapCakeSize(Optional<CakeSize> entity, Long id) {
+        if (entity.isPresent())
+            return entity.get();
+        else
+            throw new CakeSizeNotFoundException(id);
     }
 
 }

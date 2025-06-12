@@ -22,7 +22,6 @@ public interface CakeSizeRepository extends JpaRepository<CakeSize, Long> {
     List<CakeSize> findAll();
 
     // Custom query to find cake sizes by number of servings
-
     @Query(value = "SELECT * FROM cake_size WHERE number_of_servings = :servings", nativeQuery = true)
     List<CakeSize> findByNumberOfServings(@Param("servings") String servings);
 
