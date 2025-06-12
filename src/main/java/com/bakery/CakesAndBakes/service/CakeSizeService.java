@@ -11,4 +11,10 @@ public interface CakeSizeService {
     CakeSize getCakeSizeById(Long id);
 
     CakeSize saveCakeSize(CakeSize cakeSize);
+
+    // for the native query
+    int addCakeSize(String numberOfServings, String newSize);
+
+    // for the native query
+    List<CakeSize> getCakeSizeByNumberOfServings(String numberOfServings);
 }

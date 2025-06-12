@@ -25,18 +25,21 @@ public class OrderRequestController {
 
     OrderRequestService orderRequestService;
 
+    // method to get a order request by id.
     @GetMapping("/{id}")
     public ResponseEntity<OrderRequest> getOrderRequest(@PathVariable Long id) {
         return new ResponseEntity<>(orderRequestService.getOrderRequest(id), HttpStatus.OK);
     }
 
+    // Post request to save a new order request.
+    // This method handles the creation of a new order request.
     @PostMapping
     public ResponseEntity<OrderRequest> saveOrderRequest(@Valid @RequestBody OrderRequest orderRequest) {
         return new ResponseEntity<>(orderRequestService.saveOrderRequest(orderRequest), HttpStatus.CREATED);
     }
 
     // Handles GET requests to search for custom cake orders based on
-    // both cake size and cake filling.
+    // both cake size and cake filling. Part of the native SQL query.
     @GetMapping("/search")
     public ResponseEntity<List<OrderRequest>> getOrderRequestBycakeFillingAndCakeSize(@RequestParam String cakeSize,
             @RequestParam String cakeFilling) {
@@ -45,6 +48,8 @@ public class OrderRequestController {
         return new ResponseEntity<>(customOrders, HttpStatus.OK);
     }
 
+    // Handles GET requests to search for custom cake orders based on
+    // cake size, cake filling, and sponge type. Part of the native SQL query.
     @GetMapping("/search/with-sponge")
     public ResponseEntity<List<OrderRequest>> getOrderRequestByCakeFillingSizeAndSponge(@RequestParam String cakeSize,
             @RequestParam String cakeFilling, @RequestParam String spongeType) {

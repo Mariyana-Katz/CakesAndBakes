@@ -14,8 +14,9 @@ public interface OrderRequestService {
 
     List<OrderRequest> getAllOrderRequest();
 
-    List<OrderRequest> getOrderRequestByCakeFillingAndCakeSize(String size, String flavor);
+    List<OrderRequest> getOrderRequestByCakeFillingAndCakeSize(String cakeSize, String cakeFilling);
 
-    List<OrderRequest> getOrderRequestByCakeFillingSizeAndSponge(String cakeSize, String cakeFilling, String spongeType);
+    List<OrderRequest> getOrderRequestByCakeFillingSizeAndSponge(String cakeSize, String cakeFilling,
+            String spongeType);
 
 }

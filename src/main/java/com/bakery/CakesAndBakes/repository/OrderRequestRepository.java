@@ -24,12 +24,12 @@ public interface OrderRequestRepository extends JpaRepository<OrderRequest, Long
     List<OrderRequest> findAll();
 
     // Custom query to find orders by cake size and filling
-    @Query(value = "SELECT o FROM OrderRequest o WHERE o.cakeSize = :cakeSize AND o.cakeFilling = :cakeFilling")
+    @Query(value = "SELECT * FROM order_request WHERE cake_size = :cakeSize AND cake_filling = :cakeFilling", nativeQuery = true)
     List<OrderRequest> getByFillingAndSize(@Param("cakeSize") String cakeSize,
             @Param("cakeFilling") String cakeFilling);
 
     // Custom query to find orders by cake size, filling, and sponge type
-    @Query(value = " SELECT o FROM OrderRequest o WHERE o.cakeSize = :cakeSize AND o.cakeFilling = :cakeFilling AND o.spongeType = :spongeType")
+    @Query(value = " SELECT * FROM order_request WHERE cake_size = :cakeSize AND cake_filling = :cakeFilling AND sponge_type = :spongeType", nativeQuery = true)
     List<OrderRequest> getByFillingSizeAndSpongeType(@Param("cakeSize") String cakeSize,
             @Param("cakeFilling") String cakeFilling,
             @Param("spongeType") String spongeType);

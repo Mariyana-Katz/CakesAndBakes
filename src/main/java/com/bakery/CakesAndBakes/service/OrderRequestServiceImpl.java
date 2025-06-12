@@ -17,6 +17,7 @@ public class OrderRequestServiceImpl implements OrderRequestService {
 
     OrderRequestRepository orderRequestRepository;
 
+    // this method retrieves an order request by its ID
     @Override
     public OrderRequest getOrderRequest(Long id) {
         Optional<OrderRequest> orderRequest = orderRequestRepository.findById(id);
@@ -24,6 +25,7 @@ public class OrderRequestServiceImpl implements OrderRequestService {
 
     }
 
+    // this method saves an order request to the database
     @Override
     public OrderRequest saveOrderRequest(OrderRequest orderRequest) {
         return orderRequestRepository.save(orderRequest);
@@ -50,11 +52,14 @@ public class OrderRequestServiceImpl implements OrderRequestService {
             throw new OrderRequestNotFoundException(id);
     }
 
-    // part of the native SQL query
+    // part of the native SQL query, this method retrieves order requests by cake
+    // filling and size
     public List<OrderRequest> getOrderRequestByCakeFillingAndCakeSize(String cakeSize, String cakeFilling) {
-        return orderRequestRepository.getByFillingAndSize(cakeFilling, cakeSize);
+        return orderRequestRepository.getByFillingAndSize(cakeSize, cakeFilling);
     }
 
+    // part of the native SQL query, this method retrieves order requests by cake
+    // filling, size, and sponge type
     public List<OrderRequest> getOrderRequestByCakeFillingSizeAndSponge(String cakeSize, String cakeFilling,
             String spongeType) {
         return orderRequestRepository.getByFillingSizeAndSpongeType(cakeSize, cakeFilling, spongeType);
